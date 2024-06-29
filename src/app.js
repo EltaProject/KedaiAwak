@@ -135,31 +135,7 @@ checkoutButton.addEventListener("click", async (e) => {
   // console.log(objData);
   const message = formatMessage(objData);
 
-  try {
-    const response = await fetch("php/placeOrder.php", {
-      method: "POST",
-      body: data,
-    });
-    console.log(response);
-    const token = await response.text();
-    window.snap.pay(token, {
-      onSuccess: function (result) {
-        /* You may add your own implementation here */
-        Swal.fire({
-          icon: "success",
-          title: "Selamat...",
-          text: "Pembayaran Anda Berhasil",
-          footer: "<h2>Selamat Menikmati...</h2>",
-        });
-        const shoppingCart = document.querySelector(".shopping-cart").classList.remove("active");
-        console.log(result);
-      },
-    });
-    // console.log(token);
-  } catch (err) {
-    console.log(message);
-  }
-  // window.open('https://wa.me/+6282386566025?text=' + encodeURIComponent(message));
+  window.open('https://wa.me/+6282386566025?text=' + encodeURIComponent(message));
 });
 
 const formatMessage = (obj) => {
